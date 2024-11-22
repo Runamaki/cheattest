@@ -35,7 +35,11 @@ Commands วันที่ 25/10
 
 8. httpd  
    systemctl enable --now httpd  
-   firewall-cmd --add-service=http --add-service=https --runtime-to-permanent  
+   firewall-cmd --add-service=http 
+   firewall-cmd --add-service=https 
+   firewall-cmd --runtime-to-permanent
+
+*systemctl restart firewalld* restart when add port
 
 9. vi /var/www/html/สร้างไฟล์ชื่อ index.html
 
