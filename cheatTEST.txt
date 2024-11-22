@@ -1,18 +1,20 @@
 Commands วันที่ 14/10
-1. yum install httpd php ติดตั้ง HTTP และ PHP  
+yum update -y
+1. yum install httpd -y 
+php "install HTTP and PHP"  
    systemctl restart httpd / systemctl enable httpd  
-   แก้ไขไฟล์ vi /etc/httpd/conf/httpd.conf  
-   DirectoryIndex index.html index.php Index.html แก้ลำดับอินเด็กซ์  
+   "editfile" vi /etc/httpd/conf/httpd.conf  
+   DirectoryIndex index.html index.php Index.html   
 
 2. useradd -d /var/www/html/test -s /bin/bash test  
-   Passwd ตั้ง Password ของ User  
+   Passwd user "setPassword User"  
 
-3. chmod ตั้งสิทธิ์ 777 ตามผู้ใช้งาน  
-   chmod 775 /var/www/html/test  
+3. chmod 775  
+   chmod 777 /var/www/html/test  
 
-Commands วันที่ 25/10
+Commands 25/10
 1. yum install -y vsftpd  
-   แก้ไขไฟล์ vi /etc/vsftpd/vsftpd.conf  
+   "edit file" vi /etc/vsftpd/vsftpd.conf  
    - anonymous_enable = NO  
    - ascii_upload_enable = YES  
    - ascii_download_enable = YES  
@@ -21,13 +23,13 @@ Commands วันที่ 25/10
    - chroot_list_enable = YES  
    - chroot_list_file = /etc/vsftpd/chroot_list  
 
-   เพิ่มแก้ไขไฟล์:
+   "add edit vsftpd.conf":
    1. local_root = public_html  
    2. use_localtime = YES
 
-4. vi /etc/vsftpd/chroot_list เพิ่มชื่อ User  
+4. vi /etc/vsftpd/chroot_list "add name User"  
 5. systemctl enable --now vsftpd  
-6. vi /etc/sysconfig/selinux แก้ SELINUX เป็น disable  
+6. vi /etc/sysconfig/selinux "edit SELINUX be disable"  
 
 7. setsebool -P ftpd_full_access on  
    firewall-cmd --add-service=ftp --runtime-to-permanent  
@@ -41,13 +43,14 @@ Commands วันที่ 25/10
 
 *systemctl restart firewalld* restart when add port
 
-9. vi /var/www/html/สร้างไฟล์ชื่อ index.html
+9. vi /var/www/html/"namefolder" index.html
 
-Commands วันที่ 8/11
+Commands  8/11
 1. yum install mariadb-server  
    systemctl enable --now mariadb  
 
-2. firewall-cmd --add-service=mysql --runtime-to-permanent  
+2. firewall-cmd --add-service=mysql 
+   firewall-cmd --runtime-to-permanent  
 
 3. mysql_secure_installation  
    1. Enter  
@@ -60,13 +63,12 @@ Commands วันที่ 8/11
 
 4. mysql -u root -p  
    1. show databases;  
-   2. use ชื่อDB;  
+   2. use DB;  
    3. show tables;  
    4. exit;  
 
 5. yum install epel-release -y  
-/ dnf —enable repo=epel -y  
-yum install phpMyAdmin php-mysqlnd  
+ dnf --enable repo=epel -y install phpMyAdmin php-mysqlnd  
 
 Vi /etc/httpd/conf.d/phpMyAdmin.conf
 แก้ require all granted
