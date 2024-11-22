@@ -1,4 +1,4 @@
-Commands วันที่ 14/10
+Commands 14/10
 yum update -y
 1. yum install httpd -y 
 php "install HTTP and PHP"  
